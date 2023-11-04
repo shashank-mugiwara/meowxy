@@ -14,6 +14,5 @@ type Logger interface {
 
 func RegisterRoutes(router *fiber.App, logger Logger) {
 	h := NewHandler(logger)
-	routes := router.Group("/api/v1/healthCheck", h.HealthCheck)
-	routes.Get("", h.HealthCheck)
+	router.Get("/api/v1/healthCheck", h.HealthCheck)
 }
